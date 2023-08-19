@@ -8,6 +8,13 @@ class Despesa{
     this.descricao = descricao
     this.valor = valor
   }
+
+  // percorrer array
+  validarDados(){
+    for (let i in this) {
+      console.log(i, this[i])
+    }
+  }
 }
 
 //garvar dados no local storage
@@ -29,9 +36,9 @@ class bancoDados{
   }
 }
 
-// pegando dados de Registro de nova despesa
 let bd = new bancoDados()
 
+// get ids de Registro de nova despesa
 function adicionarDespesa() {
   let ano = document.getElementById('ano').value
   let mes = document.getElementById('mes').value
@@ -42,7 +49,14 @@ function adicionarDespesa() {
 
   let despesa = new Despesa(ano, mes, dia, tipo, descricao)
 
-  bd.gravar(despesa)
+  // garvando dados
+  if(despesa.validarDados()){
+    bd.gravar(despesa)
+    //menssagem sucesso
+  } else{
+    //menssagem de erro
+  }
+
 }
 
 
