@@ -58,9 +58,23 @@ function adicionarDespesa() {
   // garvando dados
   if(despesa.validarDados()){
     bd.gravar(despesa)
-    alert('Dados validos')
+
+    document.getElementById('top_style').className = "modal-header text-success"
+    document.getElementById('top_message').innerHTML = 'Dados salvos'
+    document.getElementById('main_message').innerHTML = 'Despes gravada com sucesso'
+    document.getElementById('modal_btn').className = "btn btn-success"
+    document.getElementById('modal_btn').innerHTML = "Voltar"
+
+    $('#modalMenssagem').modal('show')
+
   } else{
-    alert('Dados invalidos')
+    document.getElementById('top_style').className = "modal-header text-danger"
+    document.getElementById('top_message').innerHTML = 'Erro ao salvar dados'
+    document.getElementById('main_message').innerHTML = 'Você deve preecher todos os dados'
+    document.getElementById('modal_btn').className = "btn btn-danger"
+    document.getElementById('modal_btn').innerHTML = "Voltar e coorigir"
+
+    $('#modalMenssagem').modal('show')
   }
 }
 
