@@ -12,7 +12,7 @@ class Despesa{
   // percorrer array
   validarDados(){
     for (let i in this) {
-      console.log(i, this[i])
+      return !(this[i] === undefined || this[i] === null || this[i] === '');
     }
   }
 }
@@ -52,9 +52,9 @@ function adicionarDespesa() {
   // garvando dados
   if(despesa.validarDados()){
     bd.gravar(despesa)
-    //menssagem sucesso
+    console.log('Dados validos')
   } else{
-    //menssagem de erro
+    console.log('Dados invalidos')
   }
 
 }
