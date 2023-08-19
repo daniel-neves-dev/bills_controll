@@ -1,3 +1,37 @@
+
+class Despesa{
+  constructor(ano, mes, dia, tipo, descricao, valor) {
+    this.ano = ano
+    this.mes = mes
+    this.dia = dia
+    this.tipo = tipo
+    this.descricao = descricao
+    this.valor = valor
+  }
+}
+
+//garvar dados no local storage
+class bancoDados{
+  constructor() {
+    let id = localStorage.getItem('id')
+    if(id === null){
+      localStorage.setItem('id', 0)
+    }
+  }
+  getProximoId(){
+    let proximoId = localStorage.getItem('id')
+    return parseInt(proximoId)+1
+  }
+  gravar(dados){
+    let id = this.getProximoId()
+    localStorage.setItem(id, JSON.stringify(dados))
+    localStorage.setItem('id', id)
+  }
+}
+
+// pegando dados de Registro de nova despesa
+let bd = new bancoDados()
+
 function adicionarDespesa() {
   let ano = document.getElementById('ano').value
   let mes = document.getElementById('mes').value
@@ -6,5 +40,9 @@ function adicionarDespesa() {
   let descricao = document.getElementById('descricao').value
   let valor = document.getElementById('valor').value
 
-  console.log(ano, mes, dia, tipo, descricao)
+  let despesa = new Despesa(ano, mes, dia, tipo, descricao)
+
+  bd.gravar(despesa)
 }
+
+
