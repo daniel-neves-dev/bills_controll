@@ -10,13 +10,16 @@ class Despesa{
   }
 
   // percorrer array
-  validarDados(){
-    for(let i in this){
-      if(this[i] === undefined || this[i] == null || this[i] === ''){
-        return false
+  validarDados() {
+    for (let i in this) {
+
+      if (this[i] === undefined || this[i] === null) {
+        return false;
+      } else if (this[i] === '') {
+        return false;
       }
     }
-    return true
+    return true;
   }
 }
 
@@ -50,7 +53,7 @@ function adicionarDespesa() {
   let descricao = document.getElementById('descricao').value
   let valor = document.getElementById('valor').value
 
-  let despesa = new Despesa(ano, mes, dia, tipo, descricao)
+  let despesa = new Despesa(ano, mes, dia, tipo, descricao, valor)
 
   // garvando dados
   if(despesa.validarDados()){
